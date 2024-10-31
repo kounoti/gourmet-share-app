@@ -1,0 +1,62 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+  <mat-card class="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">
+      サインアップ
+    </h2>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill" class="w-full mt-4">
+        <mat-label>名前</mat-label>
+        <input
+          matInput
+          formControlName="name"
+          placeholder="名前を入力"
+          required
+        />
+        @if (signupForm.get('name')?.invalid) {
+        <mat-error>名前は必須です。</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full mt-4">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          type="email"
+          placeholder="example@mail.com"
+          required
+        />
+        @if (signupForm.get('email')?.invalid) {
+        <mat-error>正しいメールアドレスを入力してください。</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full mt-4">
+        <mat-label>パスワード</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          type="password"
+          placeholder="********"
+          required
+        />
+        @if (signupForm.get('password')?.invalid) {
+        <mat-error>パスワードは8文字以上である必要があります。</mat-error>
+        }
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="w-full mt-6"
+        [disabled]="signupForm.invalid || loading"
+      >
+        サインアップ
+      </button>
+
+      @if (errorMessage) {
+      <p class="text-red-600 text-sm mt-4">{{ errorMessage }}</p>
+      }
+    </form>
+  </mat-card>
+</div>

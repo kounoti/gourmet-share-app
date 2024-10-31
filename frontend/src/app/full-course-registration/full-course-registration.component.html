@@ -1,0 +1,96 @@
+<div class="min-h-screen flex items-center justify-center p-6">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl p-8">
+    <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">
+      フルコースを登録する
+    </h2>
+
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>フルコースの種類</mat-label>
+        <mat-select formControlName="type">
+          @for (courseType of courseTypes; track courseType) {
+          <mat-option [value]="courseType">
+            {{ courseType }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>料理名</mat-label>
+        <input
+          matInput
+          formControlName="dishName"
+          placeholder="料理名を入力"
+          class="focus:border-indigo-500"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>店名</mat-label>
+        <input
+          matInput
+          formControlName="restaurantName"
+          placeholder="店名を入力"
+          class="focus:border-indigo-500"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>場所</mat-label>
+        <input
+          matInput
+          formControlName="location"
+          placeholder="場所を入力"
+          class="focus:border-indigo-500"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>コメント</mat-label>
+        <textarea
+          matInput
+          formControlName="comment"
+          placeholder="コメントを入力"
+          class="focus:border-indigo-500"
+        ></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>店のリンク</mat-label>
+        <input
+          matInput
+          formControlName="restaurantLink"
+          placeholder="店のリンクを入力"
+          class="focus:border-indigo-500"
+        />
+      </mat-form-field>
+
+      <div class="my-4">
+        <label
+          for="dishPhoto"
+          class="block text-gray-700 text-sm font-bold mb-2"
+          >料理の写真</label
+        >
+        <input
+          id="dishPhoto"
+          type="file"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          class="w-full border border-gray-300 rounded p-2"
+        />
+      </div>
+
+      <div class="flex justify-center">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-purple-600 hover:to-indigo-600 text-white py-2 rounded-lg transition-all"
+        >
+          登録
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

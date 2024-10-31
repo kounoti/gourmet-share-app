@@ -1,0 +1,25 @@
+<header class="bg-blue-500 text-white py-3">
+  <nav class="container mx-auto flex justify-between items-center h-full">
+    <a href="/" class="flex items-center text-2xl font-bold">My Angular App</a>
+    <ul class="flex space-x-4">
+      <li><a routerLink="/app-home" class="hover:underline">ホーム</a></li>
+      <li>
+        <a routerLink="/my-full-course" class="hover:underline">
+          My Full Course
+        </a>
+      </li>
+      <!-- リンクを追加 -->
+      <li>
+        <a routerLink="/app-full-course-registration" class="hover:underline"
+          >フルコース登録</a
+        >
+      </li>
+      <li><a routerLink="/app-login" class="hover:underline">ログイン</a></li>
+      <li>
+        <a routerLink="/app-signup" class="hover:underline">サインアップ</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<router-outlet />

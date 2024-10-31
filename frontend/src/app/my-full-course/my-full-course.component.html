@@ -1,0 +1,66 @@
+<div
+  class="relative h-screen bg-cover bg-center"
+  style="background-image: url('images/meat.jpg')"
+>
+  <div class="flex items-center justify-center bg-black bg-opacity-50">
+    <div class="container mx-auto p-6 h-screen flex flex-col">
+      <!-- <h1 class="text-3xl font-bold text-center mb-6">自分のフルコース</h1> -->
+
+      <mat-grid-list [cols]="cols" class="flex-grow gap-4">
+        @for (dish of dishes; track dish.id) {
+        <mat-grid-tile class="flex justify-center items-stretch">
+          <mat-card
+            class="w-full max-w-xs sm:max-w-sm md:max-w-md flex flex-col"
+          >
+            <mat-card-header class="p-2">
+              <mat-card-title class="text-lg font-bold">{{
+                dish.type
+              }}</mat-card-title>
+              <mat-card-subtitle class="text-sm text-gray-500">{{
+                dish.name
+              }}</mat-card-subtitle>
+            </mat-card-header>
+
+            <img
+              mat-card-image
+              [src]="dish.imageUrl"
+              alt="{{ dish.name }}"
+              class="rounded-t-lg object-cover w-full h-48 p-2"
+            />
+
+            <mat-card-content class="flex-grow p-2">
+              <p
+                class="text-sm overflow-hidden whitespace-nowrap text-ellipsis max-w-full"
+              >
+                店名: {{ dish.restaurant }}
+              </p>
+              <p
+                class="text-sm overflow-hidden whitespace-nowrap text-ellipsis max-w-full"
+              >
+                場所: {{ dish.location }}
+              </p>
+              <p
+                class="text-sm overflow-hidden whitespace-nowrap text-ellipsis max-w-full"
+              >
+                コメント: {{ dish.comment }}
+              </p>
+            </mat-card-content>
+
+            <mat-card-actions class="p-2">
+              <a
+                mat-button
+                color="primary"
+                [href]="dish.detailLink"
+                target="_blank"
+                class="text-blue-500 hover:underline"
+              >
+                詳細リンク
+              </a>
+            </mat-card-actions>
+          </mat-card>
+        </mat-grid-tile>
+        }
+      </mat-grid-list>
+    </div>
+  </div>
+</div>
